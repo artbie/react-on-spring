@@ -5,7 +5,12 @@
   "main": "src/main/webapp/index.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run webpack-dev-server -- --config webpack.dev.config.js",
+    "cleanup": "rimraf build/resources/main/static/",
+    "build": "npm run cleanup && npm run webpack -- --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js",
+    "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +22,9 @@
     "babel-loader": "^8.1.0",
     "react": "~16.13.1",
     "react-dom": "~16.13.1",
+    "rimraf": "^3.0.2",
     "webpack": "5.11.0",
-    "webpack-cli": "4.2.0"
+    "webpack-cli": "4.2.0",
+    "webpack-dev-server": "^4.0.0-beta.0"
   }
 }
