@@ -4,7 +4,7 @@ module.exports = {
     mode: 'production',
     entry: './src/main/webapp/javascript/main.jsx',
     output: {
-        path: path.resolve(__dirname, './src/main/resources/static/dist'),
+        path: path.resolve(__dirname, 'build/resources/main/static/dist'),
         filename: 'react-app.js'
     },
     devtool: 'source-map',
