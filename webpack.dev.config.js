@@ -4,7 +4,7 @@ module.exports = {
     mode: 'development',
     entry: './src/main/webapp/javascript/main.jsx',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'build/resources/main/static/'),
         filename: 'react-app.js',
         publicPath: '/dist'
     },
@@ -25,6 +25,6 @@ module.exports = {
     devServer: {
         port: 8080,
         hot: true,
-        static: path.join(__dirname, 'src/main/resources/static/')
+        static: path.join(__dirname, 'build/resources/main/static/')
     }
 };
