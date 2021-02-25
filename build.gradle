@@ -16,7 +16,12 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+springBoot {
+    buildInfo()
 }
 
 task buildReactApp(type: NpmTask, dependsOn: 'npmInstall') {
@@ -28,10 +33,6 @@ clean.delete << file('node_modules')
 
 test {
     useJUnitPlatform()
-}
-
-bootJar {
-    mainClassName = 'pl.morenoise.webtest.WebtestApplication'
 }
 
 publishing {
