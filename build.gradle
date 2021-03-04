@@ -6,9 +6,11 @@ plugins {
     id 'com.github.node-gradle.node' version '2.2.4'
     id 'maven-publish'
     id 'net.researchgate.release' version '2.8.1'
+    id 'com.palantir.docker' version '0.26.0'
 }
 
-sourceCompatibility = '11'
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 repositories {
     mavenCentral()
@@ -20,13 +22,11 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-springBoot {
-    buildInfo()
-}
+springBoot { buildInfo() }
 
 node {
     download = true
-    version = "14.16.0"
+    version = '14.16.0'
 }
 
 task buildReactApp(type: NpmTask, dependsOn: 'npmInstall') {
@@ -54,3 +54,8 @@ publishing {
     }
 }
 
+docker {
+    name "$project.name:$project.version"
+    copySpec.from(bootJar).rename('(.*?)-\\d.*\\.jar', '$1.jar')
+    files bootJar
+}
