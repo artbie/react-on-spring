@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:jre-11.0.10_9-alpine
+FROM eclipse-temurin:17.0.2_8-jre-centos7
 
 COPY webtest.jar /
 WORKDIR /
